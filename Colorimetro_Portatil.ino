@@ -157,9 +157,13 @@ void handleUpdate() {
 }
 
 float mapearValor(int valorSensor) {
-  valorSensor = constrain(valorSensor, 66, 72); // Aseguramos que esté dentro del nuevo rango
-  float valorMapeado = 1.0f - (float)(valorSensor - 66) / (72 - 66); // Invertir el mapeo: 66-74 a 1-0
-  return valorMapeado;
+  if (valorSensor <= 72) {
+    return 0.0f;
+  } else if (valorSensor >= 88) {
+    return 0.90f;
+  } else {
+    return (float)(valorSensor - 72) / (88 - 72) * 0.90f;
+  }
 }
 
 void loop() {
@@ -224,6 +228,3 @@ void loop() {
   server.handleClient();
 }
 
-
-  server.handleClient();  // Necesario para que el servidor maneje las solicitudes
-}
