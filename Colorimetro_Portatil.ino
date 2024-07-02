@@ -157,9 +157,9 @@ void handleUpdate() {
 }
 
 float mapearValor(int valorSensor) {
-  valorSensor = constrain(valorSensor, 75, 150); // Nuevo rango basado en la nueva información
-  float valorMapeado = (float)(valorSensor - 75) / (150 - 75); // Mapear 60-150 a 0-1
-  return max(0.0f, valorMapeado);
+  valorSensor = constrain(valorSensor, 66, 72); // Aseguramos que esté dentro del nuevo rango
+  float valorMapeado = 1.0f - (float)(valorSensor - 66) / (72 - 66); // Invertir el mapeo: 66-74 a 1-0
+  return valorMapeado;
 }
 
 void loop() {
